@@ -1,5 +1,4 @@
-# 12_Busqueda_Tabu.py
-# GPS Inteligente - Módulo 12: Búsqueda Tabú
+# 12_Busqueda_Tabu.
 # El GPS recuerda caminos malos para no repetirlos.
 
 from typing import Dict, List, Tuple

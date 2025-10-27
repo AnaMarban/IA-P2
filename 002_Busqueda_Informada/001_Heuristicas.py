@@ -1,5 +1,4 @@
-# 08_Heuristicas.py
-# GPS Inteligente - Módulo 8: Heurísticas
+# 08_Heuristicas.
 # Define una función de "intuición" (estimación) para el GPS.
 
 from typing import Dict

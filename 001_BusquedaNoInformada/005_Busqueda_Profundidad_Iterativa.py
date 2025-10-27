@@ -1,5 +1,4 @@
-# 05_Profundidad_Iterativa.py
-# GPS Inteligente - Módulo 5: Búsqueda en Profundidad Iterativa (IDDFS)
+# 05_Profundidad_Iterativa.
 # Combina DLS con límites crecientes: 1, 2, 3, ... hasta encontrar destino.
 
 from typing import Dict, List, Optional, Tuple, Literal

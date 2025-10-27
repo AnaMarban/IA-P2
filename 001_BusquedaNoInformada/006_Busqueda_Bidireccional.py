@@ -1,5 +1,4 @@
-# 06_Busqueda_Bidireccional.py
-# GPS Inteligente - Módulo 6: Búsqueda Bidireccional (BBFS)
+# 06_Busqueda_Bidireccional.
 # Explora simultáneamente desde el origen y el destino.
 
 from collections import deque

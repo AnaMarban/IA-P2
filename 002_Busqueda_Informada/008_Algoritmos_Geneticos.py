@@ -1,5 +1,4 @@
-# 15_Algoritmos_Geneticos.py
-# GPS Inteligente - Módulo 15: Algoritmos Genéticos
+# 15_Algoritmos_Geneticos.
 # Evoluciona rutas mediante selección, cruce y mutación.
 
 import random

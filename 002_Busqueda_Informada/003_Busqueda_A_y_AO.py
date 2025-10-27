@@ -1,5 +1,4 @@
-# 10_Busqueda_Astar_AOstar.py
-# GPS Inteligente - Módulo 10: Búsquedas A* y AO*
+# 10_Busqueda_Astar_AOstar.
 # A* combina costo real (g) + heurística (h).
 # AO* es una versión avanzada para decisiones en grafos AND/OR.
 

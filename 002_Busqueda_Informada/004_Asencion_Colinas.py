@@ -1,5 +1,4 @@
-# 11_Ascension_Colinas.py
-# GPS Inteligente - Módulo 11: Búsqueda de Ascensión de Colinas (Hill Climbing)
+# 11_Ascension_Colinas.
 # El GPS sube "colinas" eligiendo siempre el vecino con mejor heurística.
 
 from typing import Dict, List, Optional

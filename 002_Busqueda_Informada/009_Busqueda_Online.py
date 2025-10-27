@@ -1,5 +1,4 @@
-# 16_Busqueda_Online.py
-# GPS Inteligente - Módulo 16: Búsqueda Online (Online Search)
+# 16_Busqueda_Online.
 # El GPS explora y decide en tiempo real según lo que descubre.
 
 from typing import Dict, List

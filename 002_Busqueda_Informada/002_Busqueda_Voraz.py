@@ -1,5 +1,4 @@
-# 09_Voraz_PrimeroElMejor.py
-# GPS Inteligente - Módulo 9: Búsqueda Voraz Primero el Mejor (Greedy Best-First Search)
+# 09_Voraz_PrimeroElMejor.
 # El GPS elige siempre el camino que parece más cercano al destino según la heurística.
 
 from typing import Dict, List, Optional

@@ -1,5 +1,4 @@
-# 01_BFS_menos_cruces.py
-# GPS Inteligente - Módulo 1: Búsqueda en Anchura (BFS)
+# 01_BFS_menos_cruces.
 # Encuentra la ruta con MENOS CRUCES (no en metros).
 
 from collections import deque

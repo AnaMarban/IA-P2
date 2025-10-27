@@ -1,5 +1,4 @@
-# 04_Profundidad_Limitada.py
-# GPS Inteligente - Módulo 4: Búsqueda en Profundidad Limitada (DLS)
+# 04_Profundidad_Limitada.
 # Explora en profundidad, pero con un número máximo de pasos.
 
 from typing import Dict, List, Optional, Tuple, Literal

@@ -1,5 +1,4 @@
-# 14_Busqueda_HazLocal.py
-# GPS Inteligente - Módulo 14: Búsqueda de Haz Local (Local Beam Search)
+# 14_Busqueda_HazLocal.
 # Varios GPS cooperan, compartiendo los mejores caminos.
 
 from typing import Dict, List, Tuple

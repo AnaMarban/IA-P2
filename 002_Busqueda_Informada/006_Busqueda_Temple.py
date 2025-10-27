@@ -1,5 +1,4 @@
-# 13_Temple_Simulado.py
-# GPS Inteligente - Módulo 13: Búsqueda de Temple Simulado (Simulated Annealing)
+# 13_Temple_Simulado.
 # El GPS "se enfría" poco a poco: al principio explora, luego se estabiliza.
 
 import math

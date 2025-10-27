@@ -1,5 +1,4 @@
-# 03_DFS_explorador_profundo.py
-# GPS Inteligente - Módulo 3: Búsqueda en Profundidad (DFS)
+# 03_DFS_explorador_profundo.
 # Explora una ruta hasta el fondo antes de retroceder.
 
 from typing import Dict, List, Optional

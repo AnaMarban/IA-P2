@@ -1,5 +1,4 @@
-# 07_Busqueda_En_Grafos.py
-# GPS Inteligente - Módulo 7: Búsqueda en Grafos (general)
+# 07_Busqueda_En_Grafos.
 # Clase unificadora que permite elegir algoritmo según el tipo de problema.
 
 from typing import Dict, List, Tuple, Optional

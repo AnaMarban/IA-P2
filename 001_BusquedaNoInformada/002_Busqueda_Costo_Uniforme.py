@@ -1,5 +1,4 @@
-# 02_UCS_menos_distancia.py
-# GPS Inteligente - Módulo 2: Búsqueda de Costo Uniforme (UCS)
+# 02_UCS_menos_distancia.
 # Encuentra la ruta con MENOR DISTANCIA (o tiempo).
 
 import heapq
