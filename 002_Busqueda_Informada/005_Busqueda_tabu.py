@@ -1,10 +1,11 @@
 # 12_Busqueda_Tabu.
-# El GPS recuerda caminos malos para no repetirlos.
+# El GPS recuerda caminos "malos" (tabú) para evitar ciclos y explorar alternativas.
 
 from typing import Dict, List, Tuple
-import random
+import random  # puede usarse para variar elecciones en versiones estocásticas
 
-# Grafo urbano (vecinos)
+
+# Grafo urbano: cada nodo lista sus vecinos (grafo no ponderado para este ejemplo)
 grafo: Dict[str, List[str]] = {
     "Casa": ["Av1", "Mercado"],
     "Av1": ["Casa", "Plaza"],
@@ -14,7 +15,8 @@ grafo: Dict[str, List[str]] = {
     "Hospital": ["Parque"]
 }
 
-# Heurística (distancia estimada al Hospital)
+
+# Heurística: estimación de distancia restante al Hospital (valores menores = mejor)
 h: Dict[str, int] = {
     "Casa": 8,
     "Av1": 6,
@@ -24,63 +26,83 @@ h: Dict[str, int] = {
     "Hospital": 0
 }
 
+
 def busqueda_tabu(
-    grafo: Dict[str, List[str]], 
-    inicio: str, 
-    destino: str, 
-    max_iteraciones: int = 15, 
+    grafo: Dict[str, List[str]],
+    inicio: str,
+    destino: str,
+    max_iteraciones: int = 15,
     tamano_tabu: int = 3
 ) -> Tuple[List[str], int]:
     """
-    Implementación simple de Búsqueda Tabú.
-    Busca mejorar la heurística paso a paso, evitando movimientos prohibidos.
+    Implementación simple de Búsqueda Tabú (tabu search) aplicada a navegación.
+
+    Parámetros:
+    - grafo: mapa de la ciudad (vecinos por nodo).
+    - inicio, destino: nodos de inicio y objetivo.
+    - max_iteraciones: número máximo de pasos que intentará el algoritmo.
+    - tamano_tabu: cuántos movimientos recientes recordar como prohibidos.
+
+    Retorna una tupla (camino_seguido, heuristica_mejor_encontrada).
+   
     """
+
+    # Estado inicial
     actual = inicio
     mejor = inicio
-    mejor_h = h[actual]
-    lista_tabu = []
-    camino = [actual]
+    mejor_h = h[actual]      # mejor heurística encontrada hasta ahora
+    lista_tabu: List[str] = []
+    camino: List[str] = [actual]
 
     print(f"Iniciando en: {actual} (h={mejor_h})")
 
+    # Bucle principal: intentamos mejorar hasta max_iteraciones
     for i in range(max_iteraciones):
         vecinos = grafo.get(actual, [])
         if not vecinos:
+            # Sin vecinos: punto muerto
             print("Sin vecinos para continuar.")
             break
 
-        # Evaluar vecinos (no tabú)
+        # Filtramos vecinos que están en la lista tabú
         vecinos_validos = [v for v in vecinos if v not in lista_tabu]
         if not vecinos_validos:
+            # Si todos son tabú, detenerse (o podríamos relajar la lista tabú)
             print("Todos los vecinos son tabú, el GPS se detiene.")
             break
 
-        # Escoger el mejor vecino (menor heurística)
+        # Elegimos el vecino con mejor heurística (menor h).
+        # En versiones estocásticas podríamos elegir aleatoriamente entre los mejores.
         siguiente = min(vecinos_validos, key=lambda n: h[n])
-        actual_h = h[siguiente]
+        siguiente_h = h[siguiente]
 
-        print(f"Iteración {i+1}: {actual} → {siguiente} (h={actual_h})")
+        print(f"Iteración {i+1}: {actual} → {siguiente} (h={siguiente_h})")
 
-        # Actualizar mejor ruta si mejora
-        if actual_h < mejor_h:
+        # Si encontramos una mejor heurística, la guardamos
+        if siguiente_h < mejor_h:
             mejor = siguiente
-            mejor_h = actual_h
+            mejor_h = siguiente_h
 
+        # Añadimos el paso al camino seguido
         camino.append(siguiente)
 
-        # Actualizar lista tabú (últimos movimientos)
+        # Actualizamos la lista tabú con el movimiento reciente (nodo 'actual')
         lista_tabu.append(actual)
         if len(lista_tabu) > tamano_tabu:
+            # Mantener la lista tabú con longitud fija
             lista_tabu.pop(0)
 
-        # Mover al siguiente
+        # Avanzamos al siguiente nodo
         actual = siguiente
 
+        # Si alcanzamos el destino, terminamos
         if actual == destino:
             print("¡Destino alcanzado!")
             break
 
+    # Devolvemos el camino seguido y la mejor heurística encontrada
     return camino, mejor_h
+
 
 def demo_tabu():
     origen, destino = "Casa", "Hospital"
@@ -89,6 +111,7 @@ def demo_tabu():
     print("\nRuta seguida por el GPS:")
     print("  " + " → ".join(camino))
     print(f"Heurística final: {heur_final}")
+
 
 if __name__ == "__main__":
     demo_tabu()

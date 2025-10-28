@@ -1,11 +1,11 @@
 # 10_Busqueda_Astar_AOstar.
-# A* combina costo real (g) + heurística (h).
-# AO* es una versión avanzada para decisiones en grafos AND/OR.
+# A* combina costo real (g) + heurística (h). AO* es una versión conceptual para grafos AND/OR.
 
-import heapq
+import heapq  # cola de prioridad para A*
 from typing import Dict, List, Tuple, Optional
 
-# Mapa urbano con costos (g)
+
+# Mapa urbano con costos reales (g): cada tupla es (vecino, costo)
 grafo: Dict[str, List[Tuple[str, int]]] = {
     "Casa":     [("Av1", 4), ("Parque", 3)],
     "Av1":      [("Casa", 4), ("Plaza", 2), ("Parque", 5)],
@@ -15,7 +15,8 @@ grafo: Dict[str, List[Tuple[str, int]]] = {
     "Hospital": [("Parque", 2)]
 }
 
-# Heurística (h)
+
+# Heurística (h): estimación restante al destino (Hospital)
 h: Dict[str, int] = {
     "Casa": 8,
     "Av1": 6,
@@ -25,39 +26,54 @@ h: Dict[str, int] = {
     "Hospital": 0
 }
 
+
 def a_estrella(
     grafo: Dict[str, List[Tuple[str, int]]],
     inicio: str,
     destino: str
 ) -> Optional[Tuple[List[str], int]]:
     """
-    Búsqueda A*: f(n) = g(n) + h(n)
-    g = costo acumulado, h = estimación al destino.
+    Búsqueda A* (A estrella).
+
+    f(n) = g(n) + h(n)
+    - g(n): costo acumulado desde el inicio hasta n.
+    - h(n): estimación heurística desde n hasta el destino.
+
+    La cola guarda tuplas (f, g, camino) y se extrae el menor f.
     """
+
+    # Inicializamos la cola con f = h(inicio), g = 0 y el camino que contiene inicio
     cola = [(h[inicio], 0, [inicio])]  # (f = g + h, g, camino)
+
+    # Diccionario para registrar el mejor g conocido por cada nodo (costo real mínimo visto)
     visitados = {}
 
     while cola:
         f, g, camino = heapq.heappop(cola)
         nodo = camino[-1]
 
-        # Si ya visitamos con menor costo, saltamos
+        # Si ya visitamos este nodo con un g menor o igual, no vale la pena procesarlo
         if nodo in visitados and g >= visitados[nodo]:
             continue
+        # Guardamos el mejor g encontrado para 'nodo'
         visitados[nodo] = g
 
+        # Si llegamos al destino, devolvemos el camino y el costo real g
         if nodo == destino:
             return camino, g
 
+        # Expandimos vecinos: calculamos sus g y f y los añadimos a la cola
         for vecino, costo in grafo.get(nodo, []):
             g_nuevo = g + costo
             f_nuevo = g_nuevo + h[vecino]
             heapq.heappush(cola, (f_nuevo, g_nuevo, camino + [vecino]))
 
+    # Si agotamos la cola sin encontrar destino, no hay ruta
     return None
 
 
 def demo_Astar():
+    # Demo rápida de A* sobre el grafo definido arriba
     origen, destino = "Casa", "Hospital"
     resultado = a_estrella(grafo, origen, destino)
 
@@ -78,11 +94,13 @@ def demo_Astar():
 """
 AO* se usa cuando hay decisiones condicionales o tareas paralelas.
 Por ejemplo:
-- Para llegar al Hospital, puedes ir por Parque (OR)
-  o primero pasar por Av1 **y** luego Plaza (AND).
+ - Para llegar al Hospital, puedes ir por Parque (OR)
+   o primero pasar por Av1 **y** luego Plaza (AND).
 
-En este caso, AO* elige el mejor conjunto de caminos combinando costos y heurísticas.
+AO* elige el mejor conjunto de caminos combinando costos y heurísticas
+en problemas donde algunas acciones deben combinarse (AND) y otras son alternativas (OR).
 """
+
 
 def explicar_AOstar():
     print("\n== AO* (AND-OR Search) ==")
