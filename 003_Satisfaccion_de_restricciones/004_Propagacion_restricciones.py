@@ -1,19 +1,16 @@
-# 20_Propagacion_Restricciones
-# Propagación de Restricciones: los cambios se comunican entre variables relacionadas.
 
 from typing import Dict, List, Tuple, Optional
 import copy
 
-# Variables y dominios
-variables = ["Av1", "Av2", "Parque"]
+variables = ["Av1", "Av2", "Parque"]  # Lugares a asignar horario
 dominios_iniciales: Dict[str, List[str]] = {
-    "Av1": ["8:00", "8:15", "8:30"],
-    "Av2": ["8:00", "8:15", "8:30"],
-    "Parque": ["8:00", "8:15", "8:30"]
+    "Av1": ["8:00", "8:15", "8:30"],  # Horarios posibles para Av1
+    "Av2": ["8:00", "8:15", "8:30"],  # Horarios posibles para Av2
+    "Parque": ["8:00", "8:15", "8:30"]  # Horarios posibles para Parque
 }
 
 # Restricciones: calles que no pueden compartir el mismo horario
-restricciones: List[Tuple[str, str]] = [("Av1", "Av2"), ("Av2", "Parque")]
+restricciones: List[Tuple[str, str]] = [("Av1", "Av2"), ("Av2", "Parque")]  # Restricciones de incompatibilidad
 
 def propagar_restricciones(dominios: Dict[str, List[str]], restricciones: List[Tuple[str, str]]):
     """
