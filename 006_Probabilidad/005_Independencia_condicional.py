@@ -18,4 +18,4 @@ for clima in P_clima:
     conjunto = P_trafico * P_accidente  # como son independientes dado el clima
     print(f"{clima}: P(Tráfico y Accidente | {clima}) = {conjunto:.2f}")
 
-print("\n➡️ Dado que ya conocemos el clima, los eventos 'Tráfico' y 'Accidente' son independientes.")
+print("\n Dado que ya conocemos el clima, los eventos 'Tráfico' y 'Accidente' son independientes.")

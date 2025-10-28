@@ -16,4 +16,4 @@ P_trafico = (
 
 print("== INCERTIDUMBRE DEL GPS ==")
 print(f"Probabilidad de tráfico total (sin saber el clima): {P_trafico:.2f}")
-print("➡️ El GPS no sabe el clima exacto, pero estima la posibilidad de tráfico.")
+print(" El GPS no sabe el clima exacto, pero estima la posibilidad de tráfico.")

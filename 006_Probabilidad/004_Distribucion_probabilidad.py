@@ -24,4 +24,4 @@ for estado, p in P_trafico.items():
 print(f"\nVerificación: Total = {total:.2f}")
 print(f"Tiempo esperado de viaje = {tiempo_esperado:.1f} minutos")
 
-print("\n➡️ El GPS considera todos los escenarios posibles y calcula un promedio inteligente.")
+print("\n El GPS considera todos los escenarios posibles y calcula un promedio inteligente.")

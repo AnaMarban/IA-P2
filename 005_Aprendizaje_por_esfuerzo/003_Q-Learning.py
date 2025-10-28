@@ -46,7 +46,7 @@ def q_learning():
     """Entrenamiento del GPS mediante Q-Learning."""
     for episodio in range(EPISODIOS):
         estado = "Casa"
-        print(f"\n📘 Episodio {episodio + 1}")
+        print(f"\n Episodio {episodio + 1}")
         while estado != "Hospital":
             accion = elegir_accion(estado)
             siguiente = mover(estado, accion)

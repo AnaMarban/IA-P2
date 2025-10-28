@@ -32,4 +32,4 @@ for lluvia, accidente in casos:
 print("== RED BAYESIANA ==")
 print("Nodos: Lluvia, Accidente, Tráfico")
 print(f"P(Tráfico) = {P_trafico_total:.2f}")
-print("\n➡️ El GPS combina causas (lluvia y accidentes) para inferir probabilidades del tráfico.")
+print("\n El GPS combina causas (lluvia y accidentes) para inferir probabilidades del tráfico.")

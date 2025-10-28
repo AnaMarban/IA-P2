@@ -36,7 +36,7 @@ def aprendizaje_activo():
 
     for episodio in range(ITERACIONES):
         estado = "Casa"
-        print(f"\n📘 Episodio {episodio + 1}:")
+        print(f"\n Episodio {episodio + 1}:")
         while estado != "Hospital":
             accion = politica.get(estado)
             if accion is None:
@@ -63,13 +63,13 @@ def aprendizaje_activo():
             print(f"  {estado} → {accion} → {siguiente} | Recompensa: {recompensa} | U({estado})={utilidades[estado]:.2f}")
             estado = siguiente
 
-        print(f"🧭 Política actual: {politica}")
+        print(f" Política actual: {politica}")
 
-    print("\n🔹 Utilidades finales:")
+    print("\n Utilidades finales:")
     for s, u in utilidades.items():
         print(f"  {s}: {u:.2f}")
 
-    print("\n🚗 Política final aprendida:")
+    print("\n Política final aprendida:")
     for s, a in politica.items():
         print(f"  En {s}, elige: {a}")
 

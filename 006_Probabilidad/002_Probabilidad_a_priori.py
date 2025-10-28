@@ -14,5 +14,5 @@ print(f"P(No Tráfico) = {P_no_trafico}")
 
 # Simular evidencia (por ejemplo, cámara o sensor)
 # El GPS aún no la usa, solo confía en su intuición inicial
-print("\n➡️ Antes de recibir datos, el GPS confía en su experiencia previa.")
+print("\n Antes de recibir datos, el GPS confía en su experiencia previa.")
 print("   A eso se le llama 'probabilidad a priori'.")

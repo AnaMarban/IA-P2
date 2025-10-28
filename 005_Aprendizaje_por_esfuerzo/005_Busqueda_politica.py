@@ -55,7 +55,7 @@ def busqueda_politica():
     for episodio in range(EPISODIOS):
         estado = "Casa"
         total_r = 0
-        print(f"\n📘 Episodio {episodio + 1}")
+        print(f"\n Episodio {episodio + 1}")
         while estado != "Hospital":
             accion = elegir_accion(estado)
             siguiente = mover(estado, accion)
@@ -66,9 +66,9 @@ def busqueda_politica():
             print(f"  {estado} → {accion} → {siguiente} | R={r:.1f} | Política[{estado}]={politica[estado]}")
             estado = siguiente
 
-        print(f"🏁 Recompensa total: {total_r:.1f}")
+        print(f" Recompensa total: {total_r:.1f}")
 
-    print("\n🚗 Política final aprendida:")
+    print("\n Política final aprendida:")
     for s in politica:
         print(f"  {s}: {politica[s]}")
 

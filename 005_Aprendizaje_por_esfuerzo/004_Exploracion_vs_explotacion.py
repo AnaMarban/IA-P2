@@ -39,17 +39,17 @@ def elegir_accion(estado: str) -> str:
     """Estrategia epsilon-greedy: explora o explota."""
     if random.random() < EPSILON:
         accion = random.choice(acciones[estado])
-        print(f"  🔍 Explorando: {accion}")
+        print(f"   Explorando: {accion}")
         return accion
     accion = max(acciones[estado], key=lambda a: Q[(estado,a)])
-    print(f"  💡 Explotando: {accion}")
+    print(f"   Explotando: {accion}")
     return accion
 
 def entrenamiento():
     """Entrena al GPS equilibrando exploración y explotación."""
     for episodio in range(EPISODIOS):
         estado = "Casa"
-        print(f"\n📘 Episodio {episodio + 1}")
+        print(f"\n Episodio {episodio + 1}")
         while estado != "Hospital":
             accion = elegir_accion(estado)
             siguiente = mover(estado, accion)
@@ -65,7 +65,7 @@ def entrenamiento():
             print(f"  {estado} → {accion} → {siguiente} | R={recompensa} | Q={Q[(estado,accion)]:.2f}")
             estado = siguiente
 
-    print("\n🔹 Q-Table final:")
+    print("\n Q-Table final:")
     for (s,a), v in Q.items():
         print(f"  ({s}, {a}): {v:.2f}")
 
