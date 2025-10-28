@@ -35,4 +35,4 @@ resultado = ponderacion_verosimilitud()
 
 print("== PONDERACIÓN DE VEROSIMILITUD ==")
 print(f"P(Tráfico | Accidente=True) ≈ {resultado:.2f}")
-print("\n El GPS asigna más peso a los mundos donde la evidencia (accidente) tiene más sentido.")
+print("\n El GPS asigna más peso a los mundos donde la evidencia (accidente) tiene más sentido.") 
